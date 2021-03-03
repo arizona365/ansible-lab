@@ -1,0 +1,19 @@
+- name: playbook for file manipulation
+  hosts: all 
+  become: yes 
+  tasks:
+  - name: hello file is copied
+    copy:
+      content: "hello from monday evening v2"
+      dest: /tmp/monday3.txt 
+  - name: hi file is copied
+    copy:
+      content: "Hi here v2"
+      dest: /tmp/monday4.txt
+  - name: archive hh is created
+    archive:
+      path:
+      - /tmp/monday3.txt
+      - /tmp/monday4.txt
+      dest: /tmp/hh2.zip
+      format: zip
