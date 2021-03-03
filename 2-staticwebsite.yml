@@ -1,0 +1,20 @@
+- hosts: web
+  become: yes
+  tasks:
+  - name: Install apache packages
+    yum:
+      name: httpd
+      state: present
+  - name: ensure httpd is running
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+  - name: webserver root directory exists
+    file:
+      path: /var/www/html
+      state: directory
+  - name: static website is deployed
+    uri:
+      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible-lab/main/index.html
+      dest: /var/www/htm
