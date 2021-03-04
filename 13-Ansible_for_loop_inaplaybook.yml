@@ -16,18 +16,10 @@
     file:
       path: "{{ webserver_root_dir }}"
       state: directory
-  - name: static website is deployed
-    uri:
-      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
-      dest: "{{ webserver_root_dir }}" 
-  - name: contacts.html is deployed
-    uri:
-      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/contacts.html
-      dest: "{{ webserver_root_dir }}" 
-#  - name: deploy all pages
-#    uri:
-#      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/{{ item }}.html
-#      dest: "{{ webserver_root_dir }}" 
-#    loop:
-#      - index
-#      - contacts
+ - name: deploy all pages
+   uri:
+     url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/{{ item }}.html
+     dest: "{{ webserver_root_dir }}" 
+   loop:
+     - index
+     - contacts
