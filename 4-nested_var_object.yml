@@ -4,29 +4,24 @@
     webserver:
       type: httpd
       root_dir: /var/www/html
-      abc: /var/www/html
-    webserver:
-      type: mysql
-      root_dir: /var/mysql/db
   tasks:
   - name: Install apache packages
     yum:
-      name: "{{ webserver.type }}"
+      name: "{{ webserver }}"
       state: present
   - name: ensure httpd is running
     service:
-      name: "{{ webserver.type }}"
+      name: "{{ webserver }}"
       state: started
       enabled: yes
   - name: webserver root directory exists
     file:
-      path: "{{ webserver.root_dir }}"
+      path: "{{ webserver_root_dir }}"
       state: directory
   - name: static website is deployed
     uri:
       url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
-      dest: "{{ webserver.root_dir }}"
-  
+      dest: "{{ webserver_root_dir }}"
   - name: debug var nested object
     debug:
       msg: "webserver is {{ webserver['type'] }} and location folder is {{ webserver.root_dir }}"
