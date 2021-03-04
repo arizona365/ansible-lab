@@ -1,0 +1,8 @@
+- hosts: db
+  become: yes
+  vars_files:
+    - variables.yml
+  tasks:
+  - name: debug
+    debug:
+      msg: "web host server locations is {{ package_name }}  and {{ destination }} from {{ name }} "
