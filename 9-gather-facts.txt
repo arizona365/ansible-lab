@@ -1,6 +1,0 @@
-- name: play for discovering and gathering facts
-  hosts: db
-  tasks:
-  - name: print ansible_facts
-    debug:
-      var: ansible_facts
