@@ -24,3 +24,6 @@
   - name: debug
     debug:
       msg: "web host server locations is {{ webserver_root_dir }}"
+  - name: debug
+    debug:
+      msg: "web host server locations is {{ webserver_root_dir }}"
