@@ -1,0 +1,15 @@
+1. create folder in the same working directory
+mkdir group_vars
+
+2. Create 2 other folders in group_vars: web and db and create vars.yml in each folder. 
+
+3. Migrate your vars from inventory file to specific vars.yml in each web/db folders. 
+
+---
+custom_var      :       wednesdayWebmessage
+
+4. Remove custom vars from inventory file under groups. 
+
+5. check with 
+ansible-inventory --host web
+ansible-inventory --host db
