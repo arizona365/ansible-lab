@@ -27,3 +27,4 @@
 #custom_var=wednesdayWEB
 
 #[db:vars]
+#custom_var=wednesdayDB
