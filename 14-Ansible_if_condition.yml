@@ -1,0 +1,28 @@
+- hosts: db,web
+  become: yes
+  vars:
+    webserver: httpd
+    webserver_root_dir: /var/www/html
+  tasks:
+  - name: webserver is installed
+    package:
+      name: "{{ webserver }}"
+      state: present
+  - name: webserver is up
+    service:
+      name: "{{ webserver }}"
+      state: started
+  - name: webserver root directory exists
+    file:
+      path: "{{ webserver_root_dir }}"
+      state: directory
+  - name: static website is deployed
+    when: today == 'awesome'
+    uri:
+      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
+      dest: "{{ webserver_root_dir }}"
+  - name: contacts page is deployed
+    when: today == 'awesome'
+    uri:
+      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/contacts.html
+      dest: "{{ webserver_root_dir }}"
