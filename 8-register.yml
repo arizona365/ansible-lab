@@ -1,0 +1,16 @@
+- hosts: web
+  become: yes
+  tasks:
+  - name: httpd is installed
+    package:
+      name: httpd
+      state: present
+    register: httpd_installation_output
+  - name: print in terminal
+    debug:
+      var: httpd_installation_output
+  
+  - name: copy the output
+    copy:
+      content: "{{ httpd_installation_output }}"
+      dest: /tmp/registered-vars-ouput
