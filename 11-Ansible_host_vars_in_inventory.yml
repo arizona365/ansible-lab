@@ -1,0 +1,29 @@
+- hosts: web,db
+  become: yes
+  vars:
+    webserver: httpd
+    webserver_root_dir: /var/www/html
+  tasks:
+  - name: webserver is installed
+    package:
+      name: "{{ webserver }}"
+      state: present
+  - name: webserver is up
+    service:
+      name: "{{ webserver }}"
+      state: started
+  - name: webserver root directory exists
+    file:
+      path: "{{ webserver_root_dir }}"
+      state: directory
+  - name: print custom var
+    debug:
+      msg: "{{ custom_var }}"
+
+
+# in the inventory file define your group specific vars
+
+#[web:vars]
+#custom_var=wednesdayWEB
+
+#[db:vars]
