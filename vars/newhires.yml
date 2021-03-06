@@ -1,10 +1,10 @@
 newly_hired:
 - name: hello
-    password: world123456
-          role: developer
+  password: world123456
+  role: developer
 - name: hithere
-    password: hithere123456
-    role: devops
+  password: hithere123456
+  role: devops
 - name: someone
-    password: something123456
-    role: cloud
+  password: something123456
+  role: cloud
