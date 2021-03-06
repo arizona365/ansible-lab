@@ -1,0 +1,36 @@
+# https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-filters
+# https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html
+- name: jinja2 filters
+  hosts: localhost
+  gather_facts: no
+  vars:
+    git_username: devops@sprintqa.com
+    git_password: saturday
+    git_repos: ["ansible", "AWS", "python"]
+    number_of_hours: [60, 20, 20]
+  tasks:
+  - name: j2 filter - capitalize
+    debug:
+      msg: |
+        original : {{ git_username }}
+        with filter: {{ git_username | capitalize }}
+  - name: j2 filter - password_hash('sha512')
+    debug:
+      msg: |
+        original : {{ git_password }}
+        with filter: {{ git_password | password_hash('sha512') }}
+  - name: j2 filter - length
+    debug:
+      msg: |
+        original : {{ git_repos }}
+        with filter: {{ git_repos | length }}
+  - name: j2 filter - sum 
+    debug:
+      msg: |
+        original : {{ number_of_hours }}
+        with filter: {{ number_of_hours | sum }}
+  - name: j2 filter - max
+    debug:
+      msg: |
+        original : {{ number_of_hours }}
+        with filter: {{ number_of_hours | max }}
