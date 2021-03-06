@@ -1,0 +1,22 @@
+- name: jinja2 template with for loop
+  hosts: db
+  vars:
+    app_pages:
+    - home
+    - contacs
+    - about
+    app_users:
+    - name: john smith
+      role: devops
+    - name: julia smith
+      role: cloud
+    - name: jane doe
+      role: developer
+    - name: john doe
+      role: security
+
+  tasks:
+  - name: report is generated
+    template:
+      src: 27-template_for_loop.conf
+      dest: /tmp/app_user_report.conf
