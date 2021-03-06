@@ -1,0 +1,12 @@
+- hosts: db
+  become: yes
+  vars:
+    webserver: httpd
+    webserver_root_dir: /var/www/html
+  tasks:
+  - name: import nhttpd installation tasks
+    import_tasks: tasks/httpd_installation.yml
+  - name: static website is deployed
+    uri:
+      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
+      dest: "{{ webserver_root_dir }}" 

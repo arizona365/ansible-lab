@@ -1,0 +1,28 @@
+# create Ubuntu ansible client node
+# useradd ansibleadmin 
+# passwd ansibleadmin
+# visudo
+# ansibleadmin ALL=(ALL) NOPASSWD:ALL
+# vi /etc/ssh/sshd_config
+# uncomment PasswordAuthentication=yes
+# systemctl restart sshd 
+# copy ssh public keys from parent node to ubuntu client
+# cd ~/.ssh
+# ssh-copy-id ansibleadmin@IP
+
+---
+  - name: install packages
+    hosts: all
+    gather_facts: true
+    become: yes
+    tasks:
+      - name: Installing httpd using yum
+        yum:
+          name: httpd
+          state: present
+        when: ansible_distribution != "Ubuntu"
+      - name: Istalling git using apt
+        apt:
+          name: git
+          state: present
+        when: ansible_distribution == "Ubuntu"
