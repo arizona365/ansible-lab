@@ -1,5 +1,5 @@
 - name: copy module
-  hosts: ubuntu
+  hosts: db
   tasks:
   - name: report is generated on hosts 
     copy:
