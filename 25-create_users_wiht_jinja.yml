@@ -1,0 +1,14 @@
+  
+- name: create username and set passwd for new hires
+  hosts: db
+  become: yes
+  vars_files:
+  - vars/newhires.yml
+  tasks:
+  - name: create user per hired role
+    user:
+      name: "{{ item.name }}"
+      state: present
+      password: "{{item.password | password_hash('sha512') }}"
+    loop: "{{ newly_hired }}"
+    when: (item.role == 'devops') or (item.role == 'cloud')
