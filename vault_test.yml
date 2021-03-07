@@ -1,0 +1,8 @@
+- name: use encrypted vars
+  hosts: localhost
+  vars_files:
+  - vars/newhires.yml
+  tasks:
+  - name: encrypted variable is printed
+    debug:
+      var: newly_hired
