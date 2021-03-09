@@ -1,0 +1,6 @@
+{% set item = 1 %}
+item,instance_id,image_id,ssh_key_name
+{% for ec2 in out.instances %}
+{{item}},{{ec2.instance_id}},{{ec2.image_id}},{{ec2.key_name}}
+{% set item = item + 1 %}
+{% endfor %}
