@@ -1,0 +1,13 @@
+---
+ - name: Launching aws ec2 instance
+   hosts: localhost
+   gather_facts: false
+   tasks:
+   - name: Launching ec2 instance with ec2 module 
+     ec2:
+      instance_type: t2.micro
+      image: ami-0a6d40b279a011fec
+      key_name: laptopPublicKey
+      region: us-east-1
+      tasks:
+       Environment: web 
