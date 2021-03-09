@@ -8,7 +8,7 @@
      ec2_instance_facts:
       region: us-east-1
       filters:
-       "tag:Day": Monday
+       "tag:day": monday
      register: ec2_info
    - name: displaying output
      debug: 
