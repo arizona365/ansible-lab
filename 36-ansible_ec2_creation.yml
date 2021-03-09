@@ -9,5 +9,4 @@
       image: ami-0a6d40b279a011fec
       key_name: laptopPublicKey
       region: us-east-1
-      tasks:
-       Environment: web 
+      wait: yes 
