@@ -1,0 +1,38 @@
+---
+ - name: start, stop and terminate ec2 instance
+   hosts: localhost
+   connection: local
+   gather_facts: fasle
+   tasks:
+   - name: starting ec2 instance
+     ec2:
+      instance_ids: i-05f3e126b3413a3b2
+      region: us-east-1
+      state: running
+      wait: yes
+     tags:
+      - start
+      - never
+   - name: stopping  ec2 instance
+     ec2:
+      instance_ids: i-05f3e126b3413a3b2
+      region: us-east-1
+      state: stopped
+      wait: yes
+     tags:
+      - stop
+      - never
+   - name: terminating ec2 instance
+     ec2:
+      instance_ids: i-05f3e126b3413a3b2
+      region: us-east-1
+      state: absent
+      wait: yes
+     tags:
+      - terminate
+      - never
+
+
+# ansible-playbook playbookName --syntax-check
+# ansible-playbook playbookName
+# ansible-playbook playbookName -t start 
