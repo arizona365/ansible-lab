@@ -6,7 +6,7 @@
    tasks:
    - name: starting ec2 instance
      ec2:
-      instance_ids: i-05f3e126b3413a3b2
+      instance_ids: i-05f3e126b3413a3b2, i-0e0b500f70686e563
       region: us-east-1
       state: running
       wait: yes
@@ -15,7 +15,7 @@
       - never
    - name: stopping  ec2 instance
      ec2:
-      instance_ids: i-05f3e126b3413a3b2
+      instance_ids: i-05f3e126b3413a3b2, i-0e0b500f70686e563
       region: us-east-1
       state: stopped
       wait: yes
@@ -24,7 +24,7 @@
       - never
    - name: terminating ec2 instance
      ec2:
-      instance_ids: i-05f3e126b3413a3b2
+      instance_ids: i-05f3e126b3413a3b2, i-0e0b500f70686e563
       region: us-east-1
       state: absent
       wait: yes
