@@ -13,8 +13,8 @@
    - name: displaying output
      debug: msg="{{item.instance_id}}"
      with_items: "{{ec2_info.instances}}"
-    #  tags:
-    #    - always
+     tags:
+       - always
   # - name: displaying output
   #    debug: msg="{{item.instance_id}}"
   #    with_items: "{{ec2_info.instances}}"
