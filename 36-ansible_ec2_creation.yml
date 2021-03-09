@@ -10,8 +10,6 @@
       key_name: laptopPublicKey
       region: us-east-1
       wait: yes 
-      group_id:
-        - devops
-      instance_tags:
-        - Environment: web
-        - Name: webapclient5
+      group_id: sg-04cc23ec798013bef
+      
+      
